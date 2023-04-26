@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Shorts Alert",
+  "version": "1.0",
+  "description": "An extension that alerts you if you watch YouTube Shorts for more than 2 minutes.",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "permissions": ["tabs", "activeTab", "storage", "scripting", "notifications"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/shorts/*"],
+      "js": ["index.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "alert.html"
+  }
+}
